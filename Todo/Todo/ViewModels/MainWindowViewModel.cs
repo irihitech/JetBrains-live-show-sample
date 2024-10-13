@@ -9,15 +9,18 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(AddNewItemCommand))]
     private string? _input;
 
-    [ObservableProperty] private TodoItemViewModel? _selectedItem;
+    [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(ClosePaneCommand))]
+    private TodoItemViewModel? _selectedItem;
 
     public MainWindowViewModel()
     {
         Items = new ObservableCollection<TodoItemViewModel>(TodoItemHelper.CreateItems());
         AddNewItemCommand = new RelayCommand(AddNewItemMethod, CanAddNewItem);
+        ClosePaneCommand = new RelayCommand(() => SelectedItem = null, () => SelectedItem != null);
     }
 
     public RelayCommand AddNewItemCommand { get; }
+    public RelayCommand ClosePaneCommand { get; }
 
     public ObservableCollection<TodoItemViewModel> Items { get; set; }
 
