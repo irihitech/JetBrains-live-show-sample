@@ -1,8 +1,16 @@
-﻿namespace Todo.ViewModels;
+﻿using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace Todo.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+    public List<TodoItemViewModel> Items { get; set; }
+    
+    [ObservableProperty] private TodoItemViewModel? _selectedItem;
+
+    public MainWindowViewModel()
+    {
+        Items = TodoItemHelper.CreateItems();
+    }
 }
