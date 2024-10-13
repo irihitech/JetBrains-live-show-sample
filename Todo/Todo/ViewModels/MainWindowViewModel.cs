@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Ursa.Controls;
 
 namespace Todo.ViewModels;
 
@@ -15,17 +17,20 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         Items = new ObservableCollection<TodoItemViewModel>(TodoItemHelper.CreateItems());
-        AddNewItemCommand = new RelayCommand(AddNewItemMethod, CanAddNewItem);
+        AddNewItemCommand = new AsyncRelayCommand(AddNewItemMethod, CanAddNewItem);
         ClosePaneCommand = new RelayCommand(() => SelectedItem = null, () => SelectedItem != null);
     }
 
-    public RelayCommand AddNewItemCommand { get; }
+    public AsyncRelayCommand AddNewItemCommand { get; }
     public RelayCommand ClosePaneCommand { get; }
 
     public ObservableCollection<TodoItemViewModel> Items { get; set; }
 
-    private void AddNewItemMethod()
+    private async Task AddNewItemMethod()
     {
+        var result = await MessageBox.ShowOverlayAsync("Do you want to add this item?", "Add Item",
+            button: MessageBoxButton.YesNo);
+        if (result == MessageBoxResult.No) return;
         Items.Add(new TodoItemViewModel
         {
             Title = Input
