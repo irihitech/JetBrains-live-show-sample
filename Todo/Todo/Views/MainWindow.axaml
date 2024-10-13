@@ -79,8 +79,8 @@
             <StackPanel Margin="16" DataContext="{Binding SelectedItem}">
                 <Button HorizontalAlignment="Right" Content="Close" />
                 <TextBox Text="{Binding Title}" />
-                <TextBox Text="Description" />
-                <CalendarDatePicker HorizontalAlignment="Stretch" />
+                <TextBox Text="{Binding Description}" />
+                <CalendarDatePicker HorizontalAlignment="Stretch" SelectedDate="{Binding DueDate}" />
             </StackPanel>
         </SplitView.Pane>
     </SplitView>
