@@ -17,9 +17,31 @@
             This only sets the DataContext for the previewer in an IDE,
             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
         -->
+        <!--
+            这只是为IDE中的预览器设置DataContext，
+            要为运行时设置实际的DataContext，请在代码中设置DataContext属性（查看App.axaml.cs）
+        -->
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Button Content="{Binding Greeting}"/>
+    <SplitView
+        DisplayMode="Inline"
+        IsPaneOpen="True"
+        OpenPaneLength="300"
+        PanePlacement="Right">
+        <SplitView.Content>
+            <Grid RowDefinitions="*, Auto">
+                <ListBox Grid.Row="0">
+                    <ListBoxItem>Item 1</ListBoxItem>
+                    <ListBoxItem>Item 2</ListBoxItem>
+                    <ListBoxItem>Item 3</ListBoxItem>
+                </ListBox>
+                <TextBox Grid.Row="1" />
+            </Grid>
+        </SplitView.Content>
+        <SplitView.Pane>
+            <Button Content="Hello in Pane" />
+        </SplitView.Pane>
+    </SplitView>
 
 </Window>
