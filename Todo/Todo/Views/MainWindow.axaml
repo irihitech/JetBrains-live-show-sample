@@ -39,9 +39,9 @@
             </Grid>
         </SplitView.Content>
         <SplitView.Pane>
-            <StackPanel Margin="16">
+            <StackPanel Margin="16" DataContext="{Binding SelectedItem}">
                 <Button HorizontalAlignment="Right" Content="Close" />
-                <TextBox Text="Title!" />
+                <TextBox Text="{Binding Title}" />
                 <TextBox Text="Description" />
                 <CalendarDatePicker HorizontalAlignment="Stretch" />
             </StackPanel>
