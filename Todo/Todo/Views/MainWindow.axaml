@@ -36,12 +36,31 @@
                     ItemsSource="{Binding Items}"
                     SelectedItem="{Binding SelectedItem}">
                     <ListBox.ItemTemplate>
-                        <DataTemplate >
-                            <Grid RowDefinitions="*, *" ColumnDefinitions="Auto, *, Auto">
-                                <CheckBox Margin="8 0 16 0" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="16" FontWeight="700" Text="Hello"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1"  Text="description"/>
-                                <ToggleButton Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="Important"/>
+                        <DataTemplate x:DataType="vm:TodoItemViewModel">
+                            <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="*, *">
+                                <CheckBox
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="0"
+                                    IsThreeState="False"
+                                    IsChecked="{Binding IsDone}"
+                                    Margin="8,0,16,0" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    FontWeight="700"
+                                    Text="{Binding Title}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Description}" />
+                                <ToggleButton
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    IsChecked="{Binding IsImportant}"
+                                    Content="Important" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
