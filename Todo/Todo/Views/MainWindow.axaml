@@ -30,18 +30,17 @@
         OpenPaneLength="300"
         PanePlacement="Right">
         <SplitView.Content>
-            <Grid RowDefinitions="*, Auto" Margin="16">
-                <ListBox Grid.Row="0">
-                    <ListBoxItem>Item 1</ListBoxItem>
-                    <ListBoxItem>Item 2</ListBoxItem>
-                    <ListBoxItem>Item 3</ListBoxItem>
-                </ListBox>
-                <TextBox Grid.Row="1" />
+            <Grid Margin="16" RowDefinitions="*, Auto">
+                <ListBox
+                    Grid.Row="0"
+                    ItemsSource="{Binding Items}"
+                    SelectedItem="{Binding SelectedItem}" />
+                <TextBox Grid.Row="1" Text="{Binding Input}" />
             </Grid>
         </SplitView.Content>
         <SplitView.Pane>
             <StackPanel Margin="16">
-                <Button Content="Close" HorizontalAlignment="Right"/>
+                <Button HorizontalAlignment="Right" Content="Close" />
                 <TextBox Text="Title!" />
                 <TextBox Text="Description" />
                 <CalendarDatePicker HorizontalAlignment="Stretch" />
