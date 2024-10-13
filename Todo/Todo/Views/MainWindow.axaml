@@ -82,17 +82,17 @@
             </Grid>
         </SplitView.Content>
         <SplitView.Pane>
-            <StackPanel>
+            <StackPanel Margin="16">
                 <Button HorizontalAlignment="Right" Content="Close" Command="{Binding ClosePaneCommand}" />
-                <StackPanel Margin="16" DataContext="{Binding SelectedItem}">
-                    <DockPanel>
+                <u:Form LabelPosition="Top" HorizontalAlignment="Stretch" DataContext="{Binding SelectedItem}">
+                    <DockPanel u:FormItem.Label="标题">
                         <PathIcon DockPanel.Dock="Right" IsVisible="{Binding IsImportant}" Width="16" Height="16"
                                   Data="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
                         <TextBox Text="{Binding Title}" />
                     </DockPanel>
-                    <TextBox Text="{Binding Description}" />
-                    <CalendarDatePicker HorizontalAlignment="Stretch" SelectedDate="{Binding DueDate}" />
-                </StackPanel>
+                    <TextBox u:FormItem.Label="描述" Text="{Binding Description}" />
+                    <CalendarDatePicker u:FormItem.Label="截止日期" HorizontalAlignment="Stretch" SelectedDate="{Binding DueDate}" />
+                </u:Form>
             </StackPanel>
         </SplitView.Pane>
     </SplitView>

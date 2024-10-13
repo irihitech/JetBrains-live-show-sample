@@ -28,9 +28,12 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private async Task AddNewItemMethod()
     {
-        var result = await MessageBox.ShowOverlayAsync("Do you want to add this item?", "Add Item",
-            button: MessageBoxButton.YesNo);
-        if (result == MessageBoxResult.No) return;
+        if (Input == "ERROR")
+        {
+            var result = await MessageBox.ShowOverlayAsync("Do you want to add this item?", "Add Item",
+                button: MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No) return;
+        }
         Items.Add(new TodoItemViewModel
         {
             Title = Input
