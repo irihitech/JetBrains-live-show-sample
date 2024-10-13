@@ -41,7 +41,10 @@
         </SplitView.Content>
         <SplitView.Pane>
             <StackPanel Margin="16">
-                <Button Content="Hello in Pane" />
+                <Button Content="Close" HorizontalAlignment="Right"/>
+                <TextBox Text="Title!" />
+                <TextBox Text="Description" />
+                <CalendarDatePicker HorizontalAlignment="Stretch" />
             </StackPanel>
         </SplitView.Pane>
     </SplitView>
