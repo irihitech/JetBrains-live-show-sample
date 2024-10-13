@@ -9,6 +9,8 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [ObservableProperty] private TodoItemViewModel? _selectedItem;
 
+    [ObservableProperty] private string? _input;
+
     public MainWindowViewModel()
     {
         Items = TodoItemHelper.CreateItems();
