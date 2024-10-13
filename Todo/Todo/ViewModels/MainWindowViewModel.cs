@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Todo.ViewModels;
 
@@ -8,15 +11,18 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private string? _input;
 
     [ObservableProperty] private TodoItemViewModel? _selectedItem;
+    
+    public ICommand AddNewItemCommand { get; }
 
     public MainWindowViewModel()
     {
-        Items = TodoItemHelper.CreateItems();
+        Items = new ObservableCollection<TodoItemViewModel>(TodoItemHelper.CreateItems());
+        AddNewItemCommand = new RelayCommand(AddNewItemMethod);
     }
 
-    public List<TodoItemViewModel> Items { get; set; }
+    public ObservableCollection<TodoItemViewModel> Items { get; set; }
 
-    public void AddNewItemMethod()
+    private void AddNewItemMethod()
     {
         Items.Add(new TodoItemViewModel
         {
