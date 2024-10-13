@@ -30,7 +30,7 @@
         OpenPaneLength="300"
         PanePlacement="Right">
         <SplitView.Content>
-            <Grid RowDefinitions="*, Auto">
+            <Grid RowDefinitions="*, Auto" Margin="16">
                 <ListBox Grid.Row="0">
                     <ListBoxItem>Item 1</ListBoxItem>
                     <ListBoxItem>Item 2</ListBoxItem>
@@ -40,7 +40,9 @@
             </Grid>
         </SplitView.Content>
         <SplitView.Pane>
-            <Button Content="Hello in Pane" />
+            <StackPanel Margin="16">
+                <Button Content="Hello in Pane" />
+            </StackPanel>
         </SplitView.Pane>
     </SplitView>
 
